@@ -127,4 +127,39 @@ class data extends db
             header("Location:admin_service_dashboard.php?msg=fail");
 
     }
-}
+
+
+   function getbook()
+      {
+        $q="SELECT * FROM book ";
+        $data=$this->connection->query($q);
+        return $data;
+      }
+
+    function getbookissue()
+      {
+        $q="SELECT * FROM book where bookava !=0 ";
+        $data=$this->connection->query($q);
+        return $data;
+       }
+
+    function userdata() 
+      {
+        $q="SELECT * FROM userdata ";
+        $data=$this->connection->query($q);
+        return $data;
+       }
+
+    function getbookdetail($id)
+       {
+        $q="SELECT * FROM book where id ='$id'";
+        $data=$this->connection->query($q);
+        return $data;
+        }
+
+    function userdetail($id)
+       {
+        $q="SELECT * FROM userdata where id ='$id'";
+        $data=$this->connection->query($q);
+        return $data;
+        }
