@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login Form</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<style>
-    body {
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login Form</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <style>
+
+    body{
         background-image: url('images/library.jpg')
+        
     }
+
 
     .login-form-3 .btnSubmit {
-        font-weight: 600;
-        color: #0062cc;
-        background-color: #fff;
-    }
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
 
-    .login-form-3 h3 {
-        text-align: center;
-        color: black; /* Changed text color to black */
-    }
+.login-form-3 h3 {
+    text-align: center;
+    color: #fff;
+}
 
-    .login-form-1 h3 {
-        text-align: center;
-        color: black; /* Changed text color to black */
-    }
-
-    .login-form-3 {
-        padding: 5%;
-        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    }
+.login-form-1 h3 {
+    text-align: center;
+    color: #fff;
+}
+.login-form-3 {
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
 
     </style>
     <body >
