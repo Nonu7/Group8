@@ -163,3 +163,172 @@ class data extends db
         $data=$this->connection->query($q);
         return $data;
         }
+
+
+
+    function getissuebook($userloginid)
+     {
+
+        $newfine="";
+        $issuereturn="";
+
+        $q="SELECT * FROM issuebook where userid='$userloginid'";
+        $recordSetss=$this->connection->query($q);
+
+
+        foreach($recordSetss->fetchAll() as $row) 
+          {
+            $issuereturn=$row['issuereturn'];
+            $fine=$row['fine'];
+            $newfine= $fine;
+                //  $newbookrent=$row['bookrent']+1;
+            }
+
+
+        $getdate= date("d/m/Y");
+        if($issuereturn<$getdate)
+        {
+            $q="UPDATE issuebook SET fine='$newfine' where userid='$userloginid'";
+
+            if($this->connection->exec($q)) 
+              {
+                $q="SELECT * FROM issuebook where userid='$userloginid' ";
+                $data=$this->connection->query($q);
+                return $data;
+                }
+            else
+              {
+                $q="SELECT * FROM issuebook where userid='$userloginid' ";
+                $data=$this->connection->query($q);
+                return $data;  
+                }
+           }
+        else
+          {
+            $q="SELECT * FROM issuebook where userid='$userloginid'";
+            $data=$this->connection->query($q);
+            return $data;
+            }
+     }
+
+
+    function requestbook($userid,$bookid)
+      {
+
+        $q="SELECT * FROM book where id='$bookid'";
+        $recordSetss=$this->connection->query($q);
+
+        $q="SELECT * FROM userdata where id='$userid'";
+        $recordSet=$this->connection->query($q);
+
+        foreach($recordSet->fetchAll() as $row) 
+          {
+            $username=$row['name'];
+            $usertype=$row['type'];
+            }
+
+        foreach($recordSetss->fetchAll() as $row)
+          {
+            $bookname=$row['bookname'];
+            }
+
+        if($usertype=="student")
+            $days=7;
+ 
+        if($usertype=="teacher")
+            $days=21;
+
+        $q="INSERT INTO requestbook (id,userid,bookid,username,usertype,bookname,issuedays)VALUES('','$userid', '$bookid', '$username', '$usertype', '$bookname', '$days')";
+
+        if($this->connection->exec($q))
+            header("Location:otheruser_dashboard.php?userlogid=$userid");
+
+        else 
+            header("Location:otheruser_dashboard.php?msg=fail");
+
+    }
+
+
+    function returnbook($id)
+      {
+        $fine="";
+        $bookava="";
+        $issuebook="";
+        $bookrentel="";
+
+        $q="SELECT * FROM issuebook where id='$id'";
+        $recordSet=$this->connection->query($q);
+
+        foreach($recordSet->fetchAll() as $row)
+          {
+            $userid=$row['userid'];
+            $issuebook=$row['issuebook'];
+            $fine=$row['fine'];
+           }
+
+        if($fine==0)
+         {
+        $q="SELECT * FROM book where bookname='$issuebook'";
+        $recordSet=$this->connection->query($q);   
+        foreach($recordSet->fetchAll() as $row)
+           {
+            $bookava=$row['bookava']+1;
+            $bookrentel=$row['bookrent']-1;
+             }
+        $q="UPDATE book SET bookava='$bookava', bookrent='$bookrentel' where bookname='$issuebook'";
+        $this->connection->exec($q);
+
+        $q="DELETE from issuebook where id=$id and issuebook='$issuebook' and fine='0' ";
+      
+        if($this->connection->exec($q))
+            header("Location:otheruser_dashboard.php?userlogid=$userid");
+        else
+            header("Location:otheruser_dashboard.php?msg=fail");
+         }
+        if($fine!=0)
+            {
+            header("Location:otheruser_dashboard.php?userlogid=$userid&msg=fine");
+             }
+        }
+
+
+    function delteuserdata($id)
+       {
+        $q="DELETE from userdata where id='$id'";
+        if($this->connection->exec($q))
+         {
+           header("Location:admin_service_dashboard.php?msg=done");
+           }
+        else
+           {
+           header("Location:admin_service_dashboard.php?msg=fail");
+             }
+        }
+
+
+    function deletebook($id)
+        {
+        $q="DELETE from book where id='$id'";
+        if($this->connection->exec($q))
+          { 
+           header("Location:admin_service_dashboard.php?msg=done");
+           }
+        else
+           {
+           header("Location:admin_service_dashboard.php?msg=fail");
+            }
+    }
+
+        function issuereport()
+         {
+            $q="SELECT * FROM issuebook ";
+            $data=$this->connection->query($q);
+            return $data;    
+          }
+
+        function requestbookdata()
+           {
+            $q="SELECT * FROM requestbook ";
+            $data=$this->connection->query($q);
+            return $data;
+           }
