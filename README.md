@@ -1,5 +1,6 @@
 # LIbrary Management System
-LMSs are software programs that assist libraries in managing their operations and collection management. We have modules for circulation, purchases, serials administration, reporting, and cataloguing.
+Welcome to the Library Management System GitHub repository! This open-source project is designed to help libraries efficiently manage their collections, streamline the lending process, and provide patrons with an accessible and user-friendly interface for discovering and borrowing books.
+
 
 # Steps
 - Import the sourcecode directory to Xampp/htdocs.
