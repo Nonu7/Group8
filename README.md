@@ -1,6 +1,7 @@
 # LIbrary Management System
+LMSs are software programs that assist libraries in managing their operations and collection management. We have modules for circulation, purchases, serials administration, reporting, and cataloguing.
 
-
+# Steps
 - Import the sourcecode directory to Xampp/htdocs.
 - Launch Xampp.
 - Start Apache and SQL.
