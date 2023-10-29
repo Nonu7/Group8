@@ -14,7 +14,7 @@ Welcome to the Library Management System GitHub repository! This open-source pro
 - Astha Kandhewal
 - Adity Samantray
 - Devansh Verma
-- Devanshi
+- Divyanshi
 - Ravi
 - Sakshi Pathak
 
